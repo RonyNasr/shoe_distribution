@@ -10,7 +10,6 @@ end
 get('/manage') do
   @stores = Store.all()
   @brands = Brand.all()
-  @brand = Brand.find(3)
 
   erb(:manage)
 end
@@ -48,7 +47,12 @@ delete ('/manage/stores/:id') do
 end
 
 post ('/brands/new') do
-  Brand.create({:name => params.fetch("brand_name"),:image => params.fetch("image")})
+  image = ("default.png")
+  if (params.has_key?("image") && params.fetch("image") != "")
+    image = params.fetch("image")
+  end
+
+  Brand.create({:name => params.fetch("brand_name"),:image => image})
 
   redirect('/manage')
 end

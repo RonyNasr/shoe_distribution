@@ -17,7 +17,8 @@
   <div class="col-sm-6">
     <form class="" action="/brands/new" method="post">
       <input type="text" name="brand_name" required  placeholder="Brand Name">
-      <input type="file" name="image">
+      <br><label for="image">Select an image:</label>
+      <input type="file" name="image" value="default.png">
       <button type="submit" class="btn btn-primary">Add Brand</button>
     </form>
     <% if @brands.any?() %>
@@ -30,5 +31,5 @@
   </div>
 </div>
 <div class="bottom">
-  <a class="btn btn-default" href="/">Back</a>
+  <a class="btn btn-success" href="/">Home</a>
 </div>
