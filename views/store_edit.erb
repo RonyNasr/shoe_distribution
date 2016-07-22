@@ -1,10 +1,24 @@
 <h2>Edit: <%= @store.name() %></h2>
-<form class="" action="/manage/stores/<%= @store.id() %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <label for="name">Store Name</label>
-  <input type="text" name="name" required  placeholder="<%= @store.name() %>">
-  <button type="submit" class="btn btn-primary">Edit Store Name</button>
-</form>
+<div class="row">
+  <div class="col-sm-6">
+    <form class="" action="/manage/stores/<%= @store.id() %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <label for="name">Store Name</label>
+      <input type="text" name="name" required  placeholder="<%= @store.name() %>">
+      <button type="submit" class="btn btn-primary">Edit Store Name</button>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <% if @brands.any?() %>
+      <% @brands.each() do |brand| %>
+      <h5><input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>" id="<%= brand.id() %>" <%= (@store.brands() && @store.brands().include?(Brand.find(brand.id().to_i())))?"checked":""%>></input></h5>
+      <% end %>
+    <% else %>
+      <h5>We have no brands at the moment.</h5>
+    <% end %>
+
+  </div>
+</div>
 
 <div class="bottom">
   <form class="" action="/manage/stores/<%= @store.id() %>" method="post">

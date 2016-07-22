@@ -7,6 +7,6 @@ end
 describe('#capitalize_name') do
     it "capitalizes the name of a store" do
       store = Store.create({:name => "demo store"})
-      expect(store.title()).to (eq("Demo store"))
+      expect(store.name()).to (eq("Demo store"))
     end
   end
