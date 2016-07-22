@@ -15,6 +15,13 @@ get('/manage') do
   erb(:manage)
 end
 
+get ('/stores/:id') do
+  @store = Store.find(params.fetch("id").to_i())
+  @store_brands = @store.brands()
+
+  erb(:store)
+end
+
 post ('/stores/new') do
   Store.create({:name => params.fetch("store_name")})
 
@@ -41,7 +48,18 @@ delete ('/manage/stores/:id') do
 end
 
 post ('/brands/new') do
-  Brand.create({:name => params.fetch("brand_name")})
+  Brand.create({:name => params.fetch("brand_name"),:image => params.fetch("image")})
 
   redirect('/manage')
+end
+
+post ('/manage/stores/:id/brands') do
+  store = Store.find(params.fetch("id").to_i())
+  store.brands.delete_all()
+  if params.has_key?("brand_ids")
+    params.fetch("brand_ids").each() do |id|
+      store.brands.push(Brand.find(id.to_i()))
+    end
+  end
+  redirect("/manage/stores/#{store.id()}")
 end

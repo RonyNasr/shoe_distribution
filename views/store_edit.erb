@@ -1,4 +1,4 @@
-<h2>Edit: <%= @store.name() %></h2>
+<h2><%= @store.name() %></h2>
 <div class="row">
   <div class="col-sm-6">
     <form class="" action="/manage/stores/<%= @store.id() %>" method="post">
@@ -9,13 +9,17 @@
     </form>
   </div>
   <div class="col-sm-6">
-    <% if @brands.any?() %>
-      <% @brands.each() do |brand| %>
-      <h5><input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>" id="<%= brand.id() %>" <%= (@store.brands() && @store.brands().include?(Brand.find(brand.id().to_i())))?"checked":""%>></input></h5>
-      <% end %>
-    <% else %>
+    <form action="/manage/stores/<%= @store.id() %>/brands" method="post">
+      <% if @brands.any?() %>
+        <% @brands.each() do |brand| %>
+        <h5><input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>" id="<%= brand.id() %>" <%= (@store.brands() && @store.brands().include?(Brand.find(brand.id().to_i())))?"checked":""%>> <%= brand.name() %></input></h5>
+        <% end %>
+        <button type="submit" class="btn btn-primary">Update Brands</button>
+      <% else %>
       <h5>We have no brands at the moment.</h5>
-    <% end %>
+      <% end %>
+
+    </form>
 
   </div>
 </div>
