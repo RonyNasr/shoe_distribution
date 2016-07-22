@@ -1,7 +1,5 @@
 <h2>Our Stores</h2>
 
-
-
 <% if @stores.any?() %>
   <% @stores.each() do |store| %>
     <h5><a href="/stores/<%= store.id() %>"><%= store.name() %></a></h5>

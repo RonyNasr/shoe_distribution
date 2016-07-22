@@ -6,6 +6,7 @@
       <input type="text" name="store_name" required  placeholder="Store Name">
       <button type="submit" class="btn btn-primary">Add Store</button>
     </form>
+    <h3>To edit, click on a store below:</h3>
     <% if @stores.any?() %>
       <% @stores.each() do |store| %>
         <h5><a href="/manage/stores/<%= store.id() %>"><%= store.name() %></a></h5>
@@ -18,7 +19,7 @@
     <form class="" action="/brands/new" method="post">
       <input type="text" name="brand_name" required  placeholder="Brand Name">
       <br><label for="image">Select an image:</label>
-      <input type="file" name="image" value="default.png">
+      <input type="file" name="image" value="default.png"><br>
       <button type="submit" class="btn btn-primary">Add Brand</button>
     </form>
     <% if @brands.any?() %>
