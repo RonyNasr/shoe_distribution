@@ -1,1 +1,13 @@
-<h2>The index file</h2>
+<h2>Our Stores</h2>
+
+
+
+<% if @stores.any?() %>
+  <% @stores.each() do |store| %>
+    <h5><a href="/stores/<%= store.id() %>"><%= store.name() %></a></h5>
+  <% end %>
+<% else %>
+  <h5>We have no stores at the moment.</h5>
+<% end %>
+
+<a class="btn btn-success" href="/manage">Manage Stores and Brands</a>

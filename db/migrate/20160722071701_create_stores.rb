@@ -6,5 +6,11 @@ class CreateStores < ActiveRecord::Migration
 
       t.timestamps()
     end
+    create_table(:shoes_stores) do |t|
+      t.column(:store_id, :int)
+      t.column(:shoe_id, :int)
+      
+      t.timestamps()
+    end
   end
 end

@@ -8,7 +8,7 @@ gem("pg")
 
 group(:test) do
   gem("rspec")
-  gem ("capybara")
+  gem("capybara")
   gem("shoulda-matchers")
   gem("pry")
 end

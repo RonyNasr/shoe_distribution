@@ -1,0 +1,19 @@
+.row {
+  min-height: 160px;
+}
+
+.jumbotron{
+  color: white;
+  background-color: black;
+}
+
+.bottom{
+  border-top: solid lightgrey 1px;
+  margin-top: 20px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+body{
+  background: rgba(220, 220, 220, 0.5);
+}

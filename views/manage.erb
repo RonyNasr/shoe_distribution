@@ -1,0 +1,28 @@
+<h2>Manage Stores and Brands</h2>
+
+<div class="row">
+  <div class="col-sm-6">
+    <form class="" action="/stores/new" method="post">
+      <label for="store_name"></label>
+      <input type="text" name="store_name" required  placeholder="Store Name">
+      <button type="submit" class="btn btn-primary">Add Store</button>
+    </form>
+    <% if @stores.any?() %>
+      <% @stores.each() do |store| %>
+        <h5><a href="/manage/stores/<%= store.id() %>"><%= store.name() %></a></h5>
+      <% end %>
+    <% else %>
+      <h5>We have no stores at the moment.</h5>
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+    <form class="" action="/brands/new" method="post">
+      <label for="brand_name"></label>
+      <input type="text" name="brand_name" required  placeholder="Brand Name">
+      <button type="submit" class="btn btn-primary">Add Brand</button>
+    </form>
+  </div>
+</div>
+<div class="bottom">
+  <a class="btn btn-default" href="/">Back</a>
+</div>
