@@ -1,12 +1,14 @@
 <h3>Oops there were some errors:</h3>
-<ul>
-  <% if @store.errors() %>
+
+<% if @store %>
   <% @store.errors().full_messages().each() do |message| %>
-    <li><%= message %></li>
-  <% else %>
-  <% @brand.errors().full_messages().each() do |message| %>
-    <li><%= message %></li>
+    <h5>Store <%= message %></h5>
   <% end %>
-</ul>
+<% else %>
+  <% @brand.errors().full_messages().each() do |message| %>
+    <h5>Brand <%= message %></h5>
+  <% end %>
+<% end %>
+
 
 <h5><a href="/manage" >Return to manage stores and brands and try again</a></h5>
