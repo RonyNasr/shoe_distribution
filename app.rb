@@ -22,9 +22,13 @@ get ('/stores/:id') do
 end
 
 post ('/stores/new') do
-  Store.create({:name => params.fetch("store_name")})
+  @store = Store.new({:name => params.fetch("store_name")})
 
-  redirect('/manage')
+  if @store.save()
+    redirect('/manage')
+  else
+    erb(:errors)
+  end
 end
 
 get ('/manage/stores/:id') do
@@ -52,9 +56,13 @@ post ('/brands/new') do
     image = params.fetch("image")
   end
 
-  Brand.create({:name => params.fetch("brand_name"),:image => image})
+  @brand = Brand.new({:name => params.fetch("brand_name"),:image => image})
 
-  redirect('/manage')
+  if @brand.save()
+    redirect('/manage')
+  else
+    erb(:errors)
+  end
 end
 
 post ('/manage/stores/:id/brands') do

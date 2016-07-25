@@ -9,4 +9,9 @@ describe('#capitalize_name') do
       store = Store.create({:name => "demo store"})
       expect(store.name()).to (eq("Demo store"))
     end
+
+    it("validates the presence of a store name")do
+    store = Store.new({:name => ""})
+    expect(store.save()).to (eq(false))
+    end
   end
